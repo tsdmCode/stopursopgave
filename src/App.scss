@@ -1,0 +1,14 @@
+.clockFace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+}
+
+.clockFace p {
+  background-color: gray;
+  font-family: 'orbitron';
+  font-size: 3rem;
+  padding: 5rem;
+  width: 250px;
+}
