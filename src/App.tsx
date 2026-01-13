@@ -1,12 +1,13 @@
 import './App.scss';
 import { useState, useEffect } from 'react';
 import { Button } from './assets/Button/Button';
+import { ButtonWrapper } from './assets/ButtonWrapper/ButtonWrapper';
 
 function App() {
   const [isRunning, setIsRunning] = useState(false);
   const [time, setTime] = useState(0);
   const hours = Math.floor(time / 3600000);
-  const minutes = Math.floor(time / 60000);
+  const minutes = Math.floor(time / 60000) % 60;
   const seconds = Math.floor(time / 1000) % 60;
 
   useEffect(() => {
@@ -34,16 +35,18 @@ function App() {
             ':' +
             seconds.toString().padStart(2, '0')}
         </p>
-        <Button onClick={() => setIsRunning(true)} text={'Start'} />
-        <Button onClick={() => setIsRunning(false)} text={'Stop'} />
-        <Button
-          onClick={() => {
-            console.log('Yes');
-            setIsRunning(false);
-            setTime(0);
-          }}
-          text={'Reset'}
-        />
+        <ButtonWrapper>
+          <Button onClick={() => setIsRunning(true)} text={'Start'} />
+          <Button onClick={() => setIsRunning(false)} text={'Stop'} />
+          <Button
+            onClick={() => {
+              console.log('Yes');
+              setIsRunning(false);
+              setTime(0);
+            }}
+            text={'Reset'}
+          />
+        </ButtonWrapper>
       </div>
     </>
   );
